@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tic Tac Toe</title>
+        <style>
+			h1{
+				font-family: Century Gothic;
+				font-size: 45px;
+			}
+            div
+			{
+				width:270px;
+				height: 300px;
+				border: 2px solid #20B2AA;
+				background-color: #20B2AA;
+				border-width: 100px;
+				border-height: 100px;
+				border-radius: 25px;
+				font-weight: bold;
+				font-family: Century Gothic;
+            }
+            td 
+			{
+				font-weight: bold;
+				font-family: Century Gothic;
+                border: 0 ;
+                width: 150px;
+                height: 150px;
+                font-size: 30px;
+                text-align: center;
+            }
+            td > a 
+			{
+				font-family: Century Gothic;
+                font-size: 18px;
+            }
+			h2 
+			{
+				position: absolute;
+				left: 480px;
+				top: 110px;
+				font-family: Century Gothic;
+				text-align:right;
+			}
+			h2:hover {
+				color: hotpink;
+			}
+			h3 
+			{
+				position: absolute;
+				right: 480px;
+				top: 105px;
+				font-family: Century Gothic;
+				text-align:right;
+				font-size: 25px;
+			}
+        </style>
+    </head>
+    <body>
+	<center>
+        <h1 style="text-align:center">Tic Tak Toe</h1>
+		<div class="game-grid">
+        <table>
+            {% for i in range(3) %}
+                <tr>
+                    {% for j in range(3) %}
+                        <td>
+                            {% if game[i][j] %}
+                                {{ game[i][j] }}
+                            {% else %}
+                                <a  href="{{ url_for('play', row=i, col=j) }}">Play {{ turn }} here.</a>
+                            {% endif %}
+                        </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+		</div>
+	</center>
+	<p style="text-decoration: none;">
+        <h2>
+            <a href="{{url_for('ResetGame')}}">Reset Game</a>
+        </h2>
+        <h3>
+            <a href="{{url_for ('computer')}}">Computer's Turn</a>
+        </h3>
+		</p>
+    </body>
+</html>
